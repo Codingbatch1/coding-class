@@ -1,0 +1,73 @@
+// Java Program to Sort Objects in ArrayList by Date
+// Using Comparator interface
+
+// Importing required classes
+import java.util.*;
+
+// Class 1
+// helper class for DateItem
+class DateItem {
+
+	// Member variable of this class
+	String date;
+
+	// Constructor of this class
+	DateItem(String date)
+	{
+
+		// This keyword refers to current object itself
+		this.date = date;
+	}
+}
+
+// Class 2
+// Helper class implementing Comparator
+// from the Comparable interface
+class sortItems implements Comparator<DateItem> {
+
+	// Method of this class
+	// @Override
+	public int compare(DateItem a, DateItem b)
+	{
+
+		// Returning the value after comparing the objects
+		// this will sort the data in Ascending order
+		return a.date.compareTo(b.date);
+	}
+}
+
+// Class 3
+// Main class
+public class GFG {
+
+	// Main driver method
+	public static void main(String args[])
+	{
+
+		// Creating ArrayList class object
+		// Declaring object of type-DateItem
+		// class(user-defined)
+		ArrayList<DateItem> dateList = new ArrayList<>();
+
+		// Adding data to the ArrayList
+		// using standard add() method
+		dateList.add(new DateItem("2020-03-25"));
+		dateList.add(new DateItem("2019-01-27"));
+		dateList.add(new DateItem("1998-01-27"));
+		dateList.add(new DateItem("1998-02-26"));
+
+		// Sorting the ArrayList
+		// using Collections.sort() method
+		Collections.sort(dateList, new sortItems());
+
+		// Display message
+		System.out.println("Sorted in Ascending Order");
+
+		// Iterating the list using for-each loop
+		for (DateItem d : dateList) {
+
+			// Printing the sorted items from the List
+			System.out.println(d.date);
+		}
+	}
+}
